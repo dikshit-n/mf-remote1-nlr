@@ -3,9 +3,7 @@
   <p>Message: {{ msg }}</p>
 </template>
 
-<script lang="ts">
-import { defineProps, withDefaults } from 'vue'
-  withDefaults(defineProps<{msg: string}>(), {
-    msg: "TEST MESSAGE",
-  })
+<script setup lang="ts">
+import { defineProps } from 'vue'
+defineProps<{msg: string}>()
 </script>
