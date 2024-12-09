@@ -4,10 +4,7 @@
 </template>
 
 <script lang="ts">
-  const props = defineProps({
-    msg: {
-      type: String,
-      required: true,
-    },
+  const props = withDefaults(defineProps(), {
+    msg: "TEST MESSAGE",
   })
 </script>
