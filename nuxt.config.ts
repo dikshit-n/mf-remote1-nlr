@@ -8,7 +8,4 @@ export default defineNuxtConfig({
   devServer: {
     port: 5001
   },
-  extends: [
-    ["github:dikshit-n/mf-shell-nlr#master", { install: true }]
-  ]
 })
