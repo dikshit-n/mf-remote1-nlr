@@ -6,6 +6,6 @@
 
 <script setup lang="ts">
   definePageMeta({
-    layout: "remote1",
+    layout: "shell",
   });
 </script>
