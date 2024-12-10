@@ -6,6 +6,6 @@
 
 <script setup lang="ts">
   definePageMeta({
-    layout: "shell",
+    layout: "base",
   });
 </script>
