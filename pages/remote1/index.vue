@@ -1,6 +1,6 @@
 <template>
   <div>
-    <AppRemote1 msg="test" />
+    <AppRemote1 msg="Remote app rendered" />
   </div>
 </template>
 
