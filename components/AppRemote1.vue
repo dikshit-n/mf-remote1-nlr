@@ -1,6 +1,7 @@
 <template>
   Remote App 1 - NLR
   <p>Message: {{ msg }}</p>
+  <p>{{ data.test.test }}</p>
   <BaseButton @click="componentError">Component Error</BaseButton>
 </template>
 
