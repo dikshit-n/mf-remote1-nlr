@@ -4,9 +4,9 @@
   <BaseButton @click="componentError">Component Error</BaseButton>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import { defineProps } from 'vue'
-defineProps<{msg: string}>()
+defineProps()
 
 const data = reactive({
     test: {
