@@ -1,11 +1,10 @@
 <template>
   <div>
-    <AppRemote1 msg="Remote app rendered" />
+    <h1>Service</h1>
   </div>
 </template>
-
 <script setup lang="ts">
   definePageMeta({
-    layout: "base",
-  });
+    layout: 'base'
+  })
 </script>
