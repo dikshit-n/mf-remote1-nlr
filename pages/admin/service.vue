@@ -28,14 +28,14 @@
       <AppTable :data="data" />
     </div>
     <div>
-    <!-- Custom Modal -->
-    <div v-if="isModalVisible" class="custom-modal">
-      <div class="modal-content">
-        <p>{{ modalMessage }}</p>
-        <Button label="Close" @click="isModalVisible = false" />
+      <!-- Custom Modal -->
+      <div v-if="isModalVisible" class="custom-modal">
+        <div class="modal-content">
+          <p>{{ modalMessage }}</p>
+          <Button label="Close" @click="isModalVisible = false" />
+        </div>
       </div>
     </div>
-  </div>
   </div>
 </template>
 
@@ -204,15 +204,24 @@ const emitServiceCountEvent = () => {
     max-height: 100%;
     overflow: auto;
   }
-
-   ::v-deep .p-dialog .p-dialog-header {
-    background-color: #007bff; 
-    color: #fff;
+  .custom-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
   }
 
-  ::v-deep .p-dialog .p-dialog-body {
-    background-color: #f5f5f5;
-    color: #333;
+  .modal-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
 }
 </style>
