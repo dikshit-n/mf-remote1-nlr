@@ -4,12 +4,10 @@
     <div class="header">
       <h3>Services Administration ({{ servicesCount }} services)</h3>
       <div class="actions">
-        <!-- Search Field -->
         <IconField>
           <InputIcon class="pi pi-search" />
           <InputText v-model="searchQuery" size="small" placeholder="Search" />
         </IconField>
-        <!-- Buttons -->
         <Button
           size="small"
           icon="pi pi-plus"
@@ -26,10 +24,17 @@
         />
       </div>
     </div>
-
-    <!-- Body Section -->
     <div class="body">
       <AppTable :data="data" />
+    </div>
+    <div>
+      <!-- Custom Modal -->
+      <div v-if="isModalVisible" class="custom-modal">
+        <div class="modal-content">
+          <p>{{ modalMessage }}</p>
+          <Button label="Close" @click="isModalVisible = false" />
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -41,13 +46,10 @@ import InputText from "primevue/inputtext";
 import IconField from "primevue/iconfield";
 import InputIcon from "primevue/inputicon";
 import AppTable from "@/components/AppTable.vue";
-// import { eventBus } from "@/utils/event-bus";
-// Page meta for layout
 definePageMeta({
   layout: "base",
 });
 
-// Data Array for Services
 const data = ref([
   {
     code: "DRE",
@@ -144,6 +146,8 @@ const data = ref([
 const servicesCount = computed(() => data.value.length);
 
 const searchQuery = ref("");
+const isModalVisible = ref(false);
+const modalMessage = ref("This is a custom modal message!");
 
 const addNewService = () => {
   const newService = {
@@ -158,13 +162,21 @@ const addNewService = () => {
   data.value.push(newService);
 };
 
+onMounted(() => {
+  console.log("service mounting");
+  eventBus.on("shellUserEvent", (payload) => {
+    modalMessage.value = `User Name: ${payload.userName}`;
+    isModalVisible.value = true;
+  });
+});
+
 const emitServiceCountEvent = () => {
   const payload = {
     message: "Service event emitted!",
     servicesCount: servicesCount.value,
   };
-  console.log("Emitting Event:", payload);
-  // eventBus.emit("serviceEvent", payload);
+  console.log("Emitting service Event:", payload);
+  eventBus.emit("serviceEvent", payload);
 };
 </script>
 
@@ -191,6 +203,25 @@ const emitServiceCountEvent = () => {
   .body {
     max-height: 100%;
     overflow: auto;
+  }
+  .custom-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+
+  .modal-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
 }
 </style>
