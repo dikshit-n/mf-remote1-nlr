@@ -27,7 +27,16 @@
     <div class="body">
       <AppTable :data="data" />
     </div>
-    <Toast />
+    <Dialog 
+      v-model:visible="isDialogVisible" 
+      header="Event Emitted"
+      :closable="false"
+      :modal="true"
+      :responsive="true"
+    >
+      <p>{{ dialogMessage }}</p>
+      <Button label="Close" icon="pi pi-times" @click="isDialogVisible = false" />
+    </Dialog>
   </div>
 </template>
 
@@ -39,7 +48,7 @@ import IconField from "primevue/iconfield";
 import InputIcon from "primevue/inputicon";
 import AppTable from "@/components/AppTable.vue";
 import { useToast } from "primevue/usetoast";
-
+import Dialog from "primevue/dialog";
 definePageMeta({
   layout: "base",
 });
@@ -141,6 +150,8 @@ const servicesCount = computed(() => data.value.length);
 
 const searchQuery = ref("");
 const toast = useToast();
+const isDialogVisible = ref(false);
+const dialogMessage = ref("");
 
 const addNewService = () => {
   const newService = {
@@ -158,12 +169,8 @@ const addNewService = () => {
 onMounted(() => {
   console.log("service mounting");
   eventBus.on("shellUserEvent", (payload) => {
-    toast.add({
-      severity: "success",
-      summary: "User Event Received",
-      detail: `User Name: ${payload.userName}`,
-      life: 3000,
-    });
+    dialogMessage.value = `User Name: ${payload.userName}`;
+    isDialogVisible.value = true;
   });
 });
 
