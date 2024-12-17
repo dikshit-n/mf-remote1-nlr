@@ -79,7 +79,7 @@ import IconField from "primevue/iconfield";
 import InputIcon from "primevue/inputicon";
 import AppTable from "@/components/AppTable.vue";
 
-const showModal = ref < boolean > false;
+const showModal = ref(false);
 
 const services = reactive([
   {
