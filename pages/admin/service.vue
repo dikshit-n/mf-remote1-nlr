@@ -27,16 +27,15 @@
     <div class="body">
       <AppTable :data="data" />
     </div>
-    <Dialog 
-      v-model:visible="isDialogVisible" 
-      header="Event Emitted"
-      :closable="false"
-      :modal="true"
-      :responsive="true"
-    >
-      <p>{{ dialogMessage }}</p>
-      <Button label="Close" icon="pi pi-times" @click="isDialogVisible = false" />
-    </Dialog>
+    <div>
+    <!-- Custom Modal -->
+    <div v-if="isModalVisible" class="custom-modal">
+      <div class="modal-content">
+        <p>{{ modalMessage }}</p>
+        <Button label="Close" @click="isModalVisible = false" />
+      </div>
+    </div>
+  </div>
   </div>
 </template>
 
@@ -47,7 +46,6 @@ import InputText from "primevue/inputtext";
 import IconField from "primevue/iconfield";
 import InputIcon from "primevue/inputicon";
 import AppTable from "@/components/AppTable.vue";
-import Dialog from "primevue/dialog";
 definePageMeta({
   layout: "base",
 });
@@ -148,8 +146,8 @@ const data = ref([
 const servicesCount = computed(() => data.value.length);
 
 const searchQuery = ref("");
-const isDialogVisible = ref(false);
-const dialogMessage = ref("");
+const isModalVisible = ref(false);
+const modalMessage = ref("This is a custom modal message!");
 
 const addNewService = () => {
   const newService = {
@@ -167,8 +165,8 @@ const addNewService = () => {
 onMounted(() => {
   console.log("service mounting");
   eventBus.on("shellUserEvent", (payload) => {
-    dialogMessage.value = `User Name: ${payload.userName}`;
-    isDialogVisible.value = true;
+    modalMessage.value = `User Name: ${payload.userName}`;
+    isModalVisible.value = true;
   });
 });
 
@@ -205,6 +203,16 @@ const emitServiceCountEvent = () => {
   .body {
     max-height: 100%;
     overflow: auto;
+  }
+
+   ::v-deep .p-dialog .p-dialog-header {
+    background-color: #007bff; 
+    color: #fff;
+  }
+
+  ::v-deep .p-dialog .p-dialog-body {
+    background-color: #f5f5f5;
+    color: #333;
   }
 }
 </style>
