@@ -164,7 +164,7 @@ const emitServiceCountEvent = () => {
     servicesCount: servicesCount.value,
   };
   console.log("Emitting Event:", payload);
-  // eventBus.emit("serviceEvent", payload);
+  eventBus.emit("serviceEvent", payload);
 };
 </script>
 
