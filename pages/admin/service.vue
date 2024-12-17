@@ -158,6 +158,14 @@ const addNewService = () => {
   data.value.push(newService);
 };
 
+onMounted(() => {
+  console.log("mounting");
+ eventBus.on("serviceEvent", (payload) => {
+    console.log("Event Received:", payload);
+    eventPayload.value = payload;
+  });
+});
+
 const emitServiceCountEvent = () => {
   const payload = {
     message: "Service event emitted!",
