@@ -47,7 +47,6 @@ import InputText from "primevue/inputtext";
 import IconField from "primevue/iconfield";
 import InputIcon from "primevue/inputicon";
 import AppTable from "@/components/AppTable.vue";
-import { useToast } from "primevue/usetoast";
 import Dialog from "primevue/dialog";
 definePageMeta({
   layout: "base",
@@ -149,7 +148,6 @@ const data = ref([
 const servicesCount = computed(() => data.value.length);
 
 const searchQuery = ref("");
-const toast = useToast();
 const isDialogVisible = ref(false);
 const dialogMessage = ref("");
 
