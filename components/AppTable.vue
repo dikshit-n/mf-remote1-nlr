@@ -11,101 +11,105 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
 import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
-
-const data = ref([
-  {
-    code: "DRE",
-    name: "Diabetic Retinal Exam",
-    description: "Diabetic Retinal Exam",
-    type: "Assessment",
-    created: "6/6/2024 by Kurtis Segars",
-    lastUpdated: "6/8/2024 by Stephanie Pham",
-    status: "Active"
-  },
-  {
-    code: "A1C",
-    name: "A1C Blood Test",
-    description: "A1C Blood Test",
-    type: "Assessment",
-    created: "6/6/2024 by Kurtis Segars",
-    lastUpdated: "6/7/2024 by Meghan Tooher",
-    status: "Active"
-  },
-  {
-    code: "HRA",
-    name: "HRA Call",
-    description: "HRA Call",
-    type: "Outreach",
-    created: "6/6/2024 by Kurtis Segars",
-    lastUpdated: "6/6/2024 by Kurtis Segars",
-    status: "Active"
-  },
-  {
-    code: "WEL",
-    name: "Welcome Call",
-    description: "Welcome Call",
-    type: "Outreach",
-    created: "6/6/2024 by Kurtis Segars",
-    lastUpdated: "6/7/2024 by Kurtis Segars",
-    status: "Active"
-  },
-  {
-    code: "BKR",
-    name: "Back Rub",
-    description: "Back Rub",
-    type: "Service Only",
-    created: "6/6/2024 by Kurtis Segars",
-    lastUpdated: "6/6/2024 by Kurtis Segars",
-    status: "Inactive"
-  },
-  {
-    code: "HAE",
-    name: "Health Assessment Evaluation",
-    description: "Health Assessment Evaluation",
-    type: "Assessment",
-    created: "6/6/2024 by Kurtis Segars",
-    lastUpdated: "6/6/2024 by Kurtis Segars",
-    status: "Active"
-  },
-  {
-    code: "LMP",
-    name: "Lorem ipsum",
-    description: "Lorem ipsum",
-    type: "Service Only",
-    created: "Lorem ipsum",
-    lastUpdated: "Lorem ipsum",
-    status: "Active"
-  },
-  {
-    code: "LMP",
-    name: "Lorem ipsum",
-    description: "Lorem ipsum",
-    type: "Service Only",
-    created: "Lorem ipsum",
-    lastUpdated: "Lorem ipsum",
-    status: "Active"
-  },
-  {
-    code: "LMP",
-    name: "Lorem ipsum",
-    description: "Lorem ipsum",
-    type: "Service Only",
-    created: "Lorem ipsum",
-    lastUpdated: "Lorem ipsum",
-    status: "Active"
-  },
-  {
-    code: "LMP",
-    name: "Lorem ipsum",
-    description: "Lorem ipsum",
-    type: "Service Only",
-    created: "Lorem ipsum",
-    lastUpdated: "Lorem ipsum",
-    status: "Active"
-  },
-]);
+defineProps({
+  services: {
+    type: Array,
+    required: true
+  }
+});
+// const data = ref([
+//   {
+//     code: "DRE",
+//     name: "Diabetic Retinal Exam",
+//     description: "Diabetic Retinal Exam",
+//     type: "Assessment",
+//     created: "6/6/2024 by Kurtis Segars",
+//     lastUpdated: "6/8/2024 by Stephanie Pham",
+//     status: "Active"
+//   },
+//   {
+//     code: "A1C",
+//     name: "A1C Blood Test",
+//     description: "A1C Blood Test",
+//     type: "Assessment",
+//     created: "6/6/2024 by Kurtis Segars",
+//     lastUpdated: "6/7/2024 by Meghan Tooher",
+//     status: "Active"
+//   },
+//   {
+//     code: "HRA",
+//     name: "HRA Call",
+//     description: "HRA Call",
+//     type: "Outreach",
+//     created: "6/6/2024 by Kurtis Segars",
+//     lastUpdated: "6/6/2024 by Kurtis Segars",
+//     status: "Active"
+//   },
+//   {
+//     code: "WEL",
+//     name: "Welcome Call",
+//     description: "Welcome Call",
+//     type: "Outreach",
+//     created: "6/6/2024 by Kurtis Segars",
+//     lastUpdated: "6/7/2024 by Kurtis Segars",
+//     status: "Active"
+//   },
+//   {
+//     code: "BKR",
+//     name: "Back Rub",
+//     description: "Back Rub",
+//     type: "Service Only",
+//     created: "6/6/2024 by Kurtis Segars",
+//     lastUpdated: "6/6/2024 by Kurtis Segars",
+//     status: "Inactive"
+//   },
+//   {
+//     code: "HAE",
+//     name: "Health Assessment Evaluation",
+//     description: "Health Assessment Evaluation",
+//     type: "Assessment",
+//     created: "6/6/2024 by Kurtis Segars",
+//     lastUpdated: "6/6/2024 by Kurtis Segars",
+//     status: "Active"
+//   },
+//   {
+//     code: "LMP",
+//     name: "Lorem ipsum",
+//     description: "Lorem ipsum",
+//     type: "Service Only",
+//     created: "Lorem ipsum",
+//     lastUpdated: "Lorem ipsum",
+//     status: "Active"
+//   },
+//   {
+//     code: "LMP",
+//     name: "Lorem ipsum",
+//     description: "Lorem ipsum",
+//     type: "Service Only",
+//     created: "Lorem ipsum",
+//     lastUpdated: "Lorem ipsum",
+//     status: "Active"
+//   },
+//   {
+//     code: "LMP",
+//     name: "Lorem ipsum",
+//     description: "Lorem ipsum",
+//     type: "Service Only",
+//     created: "Lorem ipsum",
+//     lastUpdated: "Lorem ipsum",
+//     status: "Active"
+//   },
+//   {
+//     code: "LMP",
+//     name: "Lorem ipsum",
+//     description: "Lorem ipsum",
+//     type: "Service Only",
+//     created: "Lorem ipsum",
+//     lastUpdated: "Lorem ipsum",
+//     status: "Active"
+//   },
+// ]);
 
 </script>
