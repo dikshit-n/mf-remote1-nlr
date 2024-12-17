@@ -4,12 +4,10 @@
     <div class="header">
       <h3>Services Administration ({{ servicesCount }} services)</h3>
       <div class="actions">
-        <!-- Search Field -->
         <IconField>
           <InputIcon class="pi pi-search" />
           <InputText v-model="searchQuery" size="small" placeholder="Search" />
         </IconField>
-        <!-- Buttons -->
         <Button
           size="small"
           icon="pi pi-plus"
@@ -26,11 +24,10 @@
         />
       </div>
     </div>
-
-    <!-- Body Section -->
     <div class="body">
       <AppTable :data="data" />
     </div>
+    <Toast />
   </div>
 </template>
 
@@ -41,13 +38,12 @@ import InputText from "primevue/inputtext";
 import IconField from "primevue/iconfield";
 import InputIcon from "primevue/inputicon";
 import AppTable from "@/components/AppTable.vue";
-// import { eventBus } from "@/utils/event-bus";
-// Page meta for layout
+import { useToast } from "primevue/usetoast";
+
 definePageMeta({
   layout: "base",
 });
 
-// Data Array for Services
 const data = ref([
   {
     code: "DRE",
@@ -144,6 +140,7 @@ const data = ref([
 const servicesCount = computed(() => data.value.length);
 
 const searchQuery = ref("");
+const toast = useToast();
 
 const addNewService = () => {
   const newService = {
@@ -159,10 +156,14 @@ const addNewService = () => {
 };
 
 onMounted(() => {
-  console.log("mounting");
- eventBus.on("serviceEvent", (payload) => {
-    console.log("Event Received:", payload);
-    eventPayload.value = payload;
+  console.log("service mounting");
+  eventBus.on("shellUserEvent", (payload) => {
+    toast.add({
+      severity: "success",
+      summary: "User Event Received",
+      detail: `User Name: ${payload.userName}`,
+      life: 3000,
+    });
   });
 });
 
@@ -171,7 +172,7 @@ const emitServiceCountEvent = () => {
     message: "Service event emitted!",
     servicesCount: servicesCount.value,
   };
-  console.log("Emitting Event:", payload);
+  console.log("Emitting service Event:", payload);
   eventBus.emit("serviceEvent", payload);
 };
 </script>
